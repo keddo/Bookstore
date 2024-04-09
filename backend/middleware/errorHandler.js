@@ -1,6 +1,7 @@
 import { CustomError } from "../utils/index.js";
 
 const errorHandler = (err, req, res, next) => {
+    // console.log(err)
     if (err.name == "ValidationError") {
         return res.status(400).send({
             type: "ValidationError",
