@@ -48,4 +48,16 @@ const deleteBook = asyncWrapper(async (req, res) => {
     return res.status(200).send(book);
 });
 
-export {createBook, getAllBooks, getBook, updateBook, deleteBook};
+const getBookByCategory = asyncWrapper(async (req, res) => {
+    const { category } = req.params.category;
+    const books = await Book.find({ category });
+    return res.status(200).send(books);
+});
+
+const getBookByLanguage = asyncWrapper(async (req, res) => {
+    const { lang } = req.params.lang;
+    const books = await Book.find({ lang });
+    return res.status(200).send(books);
+});
+
+export {createBook, getAllBooks, getBook, updateBook, deleteBook, getBookByCategory, getBookByLanguage};
